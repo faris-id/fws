@@ -654,7 +654,7 @@ h1, h2, h3, h4, h5, h6 {
 #qbootstrap-countdown {
   background-size: cover;
   position: relative;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   z-index: 0;
   width: 100%;
 }
