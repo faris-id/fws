@@ -103,7 +103,7 @@
 	// Page Nav
 	var clickMenu = function() {
 
-		$('a:not([class="external"])').click(function(event){
+		$('a:not([class="external"],[class="rsvp"])').click(function(event){
 			var section = $(this).data('nav-section'),
 				navbar = $('#navbar');
 		    $('html, body').animate({
@@ -291,6 +291,33 @@
 		$('.player').mb_YTPlayer();
 	};
 
+	var rsvpAttendance = 1;
+
+	var rsvpAttendanceHandler = function() {
+		$('#rsvp-attendance-yes').click(function(event){
+			rsvpAttendance = 1;
+			$('button#rsvp-attendance').html("Ya <span class=\"caret\"></span>")
+
+			event.preventDefault();
+			return false;
+		});
+
+		$('#rsvp-attendance-no').click(function(event){
+			rsvpAttendance = 0;
+			$('button#rsvp-attendance').html("Tidak <span class=\"caret\"></span>")
+
+			event.preventDefault();
+			return false;
+		});
+
+		$('#rsvp-attendance-maybe').click(function(event){
+			rsvpAttendance = 2;
+			$('button#rsvp-attendance').html("Mungkin <span class=\"caret\"></span>")
+
+			event.preventDefault();
+			return false;
+		});
+	}
 
 	// Document on load.
 	$(function(){
@@ -305,6 +332,8 @@
 		contentWayPoint();
 		inlineSVG();
 		bgVideo();
+		rsvpAttendanceHandler();
+
 	});
 
 
