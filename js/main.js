@@ -335,6 +335,10 @@
 			rsvp.attend = rsvpAttendance;
 			rsvp.message = $('textarea#rsvp-message').val();
 
+			$("div#rsvp-form-default").hide()
+			$("div#rsvp-form-thanks").hide()
+			$("div#rsvp-form-loading").show()
+
 			$.ajax({
 				type: "POST",
 				url: "http://rsvp.services.faris.id:8080/rsvps",
@@ -343,12 +347,18 @@
 				data: JSON.stringify(rsvp),
 				success: function(data){
 					console.log(data)
+					$("div#rsvp-form-default").hide()
+					$("div#rsvp-form-loading").hide()
+					$("div#rsvp-form-thanks").show()
 				},
 				error: function(jqXhr, textStatus, errorThrown){
 					console.log(jqXhr)
 					console.log(textStatus)
 					console.log(errorThrown)	
-				}
+					$("div#rsvp-form-default").show()
+					$("div#rsvp-form-loading").hide()
+					$("div#rsvp-form-thanks").hide()
+				},
 			})
 
 			event.preventDefault();
