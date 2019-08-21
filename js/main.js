@@ -293,10 +293,16 @@
 
 	var rsvpAttendance = 1;
 
+	var closeAttendance = function(){
+		$("div#rsvp-attendance-wrapper").removeClass("open")
+		$("button#rsvp-attendance").attr("aria-expanded", "false")
+	}
+
 	var rsvpAttendanceHandler = function() {
 		$('#rsvp-attendance-yes').click(function(event){
 			rsvpAttendance = 1;
 			$('button#rsvp-attendance').html("Ya <span class=\"caret\"></span>")
+			closeAttendance()
 
 			event.preventDefault();
 			return false;
@@ -305,6 +311,7 @@
 		$('#rsvp-attendance-no').click(function(event){
 			rsvpAttendance = 0;
 			$('button#rsvp-attendance').html("Tidak <span class=\"caret\"></span>")
+			closeAttendance()
 
 			event.preventDefault();
 			return false;
@@ -313,6 +320,7 @@
 		$('#rsvp-attendance-maybe').click(function(event){
 			rsvpAttendance = 2;
 			$('button#rsvp-attendance').html("Mungkin <span class=\"caret\"></span>")
+			closeAttendance()
 
 			event.preventDefault();
 			return false;

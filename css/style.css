@@ -1735,3 +1735,7 @@ textarea#rsvp-message {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+
+#rsvp-attendance-ul li {
+  cursor: pointer;
+}
