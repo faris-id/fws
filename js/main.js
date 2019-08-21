@@ -327,6 +327,35 @@
 		});
 	}
 
+	var rsvpHandler = function() {
+		$('button#rsvp-send-btn').click(function(event){
+			var rsvp = {};
+			rsvp.name = $('input#rsvp-name').val();
+			rsvp.address = $('input#rsvp-address').val();
+			rsvp.attend = rsvpAttendance;
+			rsvp.message = $('textarea#rsvp-message').val();
+
+			$.ajax({
+				type: "POST",
+				url: "http://rsvp.services.faris.id:8080/rsvps",
+				dataType: "json",
+				contentType: "application/json",
+				data: JSON.stringify(rsvp),
+				success: function(data){
+					console.log(data)
+				},
+				error: function(jqXhr, textStatus, errorThrown){
+					console.log(jqXhr)
+					console.log(textStatus)
+					console.log(errorThrown)	
+				}
+			})
+
+			event.preventDefault();
+			return false;
+		});
+	}
+
 	// Document on load.
 	$(function(){
 
@@ -341,6 +370,7 @@
 		inlineSVG();
 		bgVideo();
 		rsvpAttendanceHandler();
+		rsvpHandler();
 
 	});
 
