@@ -353,7 +353,7 @@
 				data: JSON.stringify(rsvp),
 				success: function(response){
 					if (response.meta.http_status != 201){
-						alert(response.data.message)
+						alert(response.errors[0].message)
 					} else {
 						$("div#rsvp-form-default").hide()
 						$("div#rsvp-form-loading").hide()
@@ -361,6 +361,7 @@
 					}
 				},
 				error: function(jqXhr, textStatus, errorThrown){	
+					alert(textStatus + " : " + errorThrown)
 					$("div#rsvp-form-default").show()
 					$("div#rsvp-form-loading").hide()
 					$("div#rsvp-form-thanks").hide()
