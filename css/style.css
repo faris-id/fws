@@ -1721,7 +1721,7 @@ button#rsvp-attendance {
   width: 230px;
 }
 
-button#rsvp-attendance :hover {
+button#rsvp-attendance:hover {
   color:#EEEEEE !important; 
   /* font-weight: bold; */
 }
@@ -1745,6 +1745,10 @@ button#rsvp-send-btn {
   background: rgb(62, 196, 73) !important;
   color: cornsilk !important;
   width: 150px;
+}
+
+button#rsvp-send-btn:hover {
+  background: rgb(32, 107, 72) !important;
 }
 
 @media screen and (max-width: 767px) {
