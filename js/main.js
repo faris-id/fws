@@ -335,6 +335,12 @@
 			rsvp.attend = rsvpAttendance;
 			rsvp.message = $('textarea#rsvp-message').val();
 
+			if (rsvp.name.trim() == "" || rsvp.address.trim() == "") {
+				alert("Nama dan Alamat tolong diisi ya hehe")
+				event.preventDefault();
+				return false;
+			}
+
 			$("div#rsvp-form-default").hide()
 			$("div#rsvp-form-thanks").hide()
 			$("div#rsvp-form-loading").show()
@@ -345,16 +351,16 @@
 				dataType: "json",
 				contentType: "application/json",
 				data: JSON.stringify(rsvp),
-				success: function(data){
-					console.log(data)
-					$("div#rsvp-form-default").hide()
-					$("div#rsvp-form-loading").hide()
-					$("div#rsvp-form-thanks").show()
+				success: function(response){
+					if (response.meta.http_status != 201){
+						alert(response.data.message)
+					} else {
+						$("div#rsvp-form-default").hide()
+						$("div#rsvp-form-loading").hide()
+						$("div#rsvp-form-thanks").show()
+					}
 				},
-				error: function(jqXhr, textStatus, errorThrown){
-					console.log(jqXhr)
-					console.log(textStatus)
-					console.log(errorThrown)	
+				error: function(jqXhr, textStatus, errorThrown){	
 					$("div#rsvp-form-default").show()
 					$("div#rsvp-form-loading").hide()
 					$("div#rsvp-form-thanks").hide()
