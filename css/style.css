@@ -1718,6 +1718,7 @@ button#rsvp-attendance {
   background:#f4f3e2; 
   color:#444444; 
   font-weight: bold;
+  width: 230px;
 }
 
 button#rsvp-attendance :hover {
@@ -1738,4 +1739,16 @@ textarea#rsvp-message {
 
 #rsvp-attendance-ul li {
   cursor: pointer;
+}
+
+button#rsvp-send-btn {
+  background: rgb(62, 196, 73) !important;
+  color: cornsilk !important;
+  width: 150px;
+}
+
+@media screen and (max-width: 767px) {
+  div#rsvp-send-btn-left-section {
+    display: none;
+  }
 }
